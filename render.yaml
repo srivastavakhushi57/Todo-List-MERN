@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: todo-list-mern-app
+    env: node
+    plan: free
+    buildCommand: npm --prefix server install && npm --prefix client install && npm --prefix client run build
+    startCommand: node server/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false

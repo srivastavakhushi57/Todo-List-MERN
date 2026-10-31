@@ -1,0 +1,30 @@
+{
+  "name": "todo-list-app",
+  "version": "1.0.0",
+  "description": "Full Stack MERN To-Do List Application with Express.js, MongoDB (Mongoose), and React",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "node server/server.js",
+    "client": "npm --prefix client run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm --prefix client run build",
+    "test": "node server/test-api.js",
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install"
+  },
+  "keywords": [
+    "mongodb",
+    "express",
+    "react",
+    "nodejs",
+    "todo-list",
+    "full-stack",
+    "rest-api",
+    "controller-service-routes"
+  ],
+  "author": "Khushi Srivastava",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

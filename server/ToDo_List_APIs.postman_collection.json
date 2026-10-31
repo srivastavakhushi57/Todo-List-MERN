@@ -1,0 +1,211 @@
+{
+  "info": {
+    "_postman_id": "c1f7a4e2-63bc-4b92-8951-e408d6d5ef18",
+    "name": "To-Do List API (MongoDB & Express.js)",
+    "description": "Collection of API endpoints for the To-Do List Application built with Node.js, Express.js, and MongoDB.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "taskId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "1. Retrieve All Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks"]
+        }
+      }
+    },
+    {
+      "name": "2. Search Tasks by Keyword",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks?search=assignment",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks"],
+          "query": [
+            {
+              "key": "search",
+              "value": "assignment"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "3. Filter Tasks by Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks?status=pending",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks"],
+          "query": [
+            {
+              "key": "status",
+              "value": "pending"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "4. Filter Tasks by Priority",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks?priority=high",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks"],
+          "query": [
+            {
+              "key": "priority",
+              "value": "high"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Get Task Summary Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks/stats",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks", "stats"]
+        }
+      }
+    },
+    {
+      "name": "6. Create New Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Build MongoDB & React To-Do List Application\",\n  \"description\": \"Implement Express Controller-Service-Routes and integrate with modern React frontend with Tailwind CSS\",\n  \"status\": \"in-progress\",\n  \"priority\": \"high\",\n  \"category\": \"Study\",\n  \"dueDate\": \"2026-11-05T18:00:00.000Z\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks"]
+        }
+      }
+    },
+    {
+      "name": "7. Get Task by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks/{{taskId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks", "{{taskId}}"]
+        }
+      }
+    },
+    {
+      "name": "8. Update Task Details (Full/Partial)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Build MongoDB & React To-Do List Application (Updated)\",\n  \"description\": \"Fully tested and verified with Postman automated suite\",\n  \"priority\": \"medium\",\n  \"category\": \"Study\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks/{{taskId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks", "{{taskId}}"]
+        }
+      }
+    },
+    {
+      "name": "9. Update Task Status Specifically",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"completed\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks/{{taskId}}/status",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks", "{{taskId}}", "status"]
+        }
+      }
+    },
+    {
+      "name": "10. Delete Task by ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks/{{taskId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks", "{{taskId}}"]
+        }
+      }
+    },
+    {
+      "name": "11. Batch Delete Completed Tasks",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks/completed/all",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks", "completed", "all"]
+        }
+      }
+    }
+  ]
+}
